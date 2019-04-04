@@ -2,9 +2,11 @@ package paquete;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Main {
 
-	private static float CAPACIDAD = 1000;
+	private static final float CAPACIDAD = 1000;
 
 	public static void main(String[] args) {
 
@@ -14,9 +16,9 @@ public class Main {
 
 		do {
 			System.out.println("Bienvenido! Como lo podemos ayudar?");
-			System.out.println("\n\t 1. Obtener precio boleto");
+			System.out.println("\n\t 1. Ingresar dinero");
 			System.out.println("\t 2. Obtener saldo");
-			System.out.println("\t 3. Ingresar dinero");
+			System.out.println("\t 3. Obtener precio boleto");
 			System.out.println("\t 4. Obtener total");
 			System.out.println("\t 5. Poner precio");
 			System.out.println("\t 6. Vaciar maquina");
@@ -27,14 +29,6 @@ public class Main {
 
 			switch (opcion) {
 			case 1:
-				System.out.printf("\nPrecio del boleto: $%.2f\n\n", maquina.obtenerPrecio());
-				break;
-
-			case 2:
-				System.out.printf("\nSu saldo es de: $%.2f \n \n", maquina.obtenerSaldo());
-				break;
-
-			case 3:
 				System.out.print("Cantidad de dinero a ingresar: ");
 				float dineroIngresado = scan.nextFloat();
 				if (dineroIngresado > 0 && !maquina.chequearCompleto(dineroIngresado, CAPACIDAD)) {
@@ -47,6 +41,15 @@ public class Main {
 				} else {
 					System.out.println("La maquina expendedora no recibe más dinero. Lamentamos las molestias");
 				}
+				
+				break;
+
+			case 2:
+				System.out.printf("\nSu saldo es de: $%.2f \n \n", maquina.obtenerSaldo());
+				break;
+
+			case 3:
+				System.out.printf("\nPrecio del boleto: $%.2f\n\n", maquina.obtenerPrecio());				
 				break;
 				
 			case 4:
@@ -83,6 +86,10 @@ public class Main {
 		} while (opcion != 0);
 		
 		scan.close();
+		
+		//JOptionPane pane = new JOptionPane();
+		
+		//pane.showMessageDialog(pane, "Mati tiene plata");
 	}
 
 }
